@@ -1,0 +1,103 @@
+"""
+
+This program controls 3 balls bouncing around the game window. It demonstrates the following features:
+
+The code controlling the movement of the ball is abstracted away into a Ball class
+This code includes a set of 4 conditionals dealing with bouncing off each of the 4 edges of the screen
+The balls are managed by adding them to a ball list
+Each Ball is just a drawn shape, but the code structure shows how we would manage lists of sprites in the same way
+
+"""
+
+
+import arcade
+
+SCREEN_WIDTH = 640
+SCREEN_HEIGHT = 480
+
+
+class Ball:
+    """ This class manages a ball bouncing on the screen. """
+
+    def __init__(self, position_x, position_y, change_x, change_y, radius, color):
+        """ Constructor. """
+
+        # Take the parameters of the init function above, and create instance variables out of them.
+        self.position_x = position_x
+        self.position_y = position_y
+        self.change_x = change_x
+        self.change_y = change_y
+        self.radius = radius
+        self.color = color
+
+    def draw(self):
+        """ Draw the balls with the instance variables we have. """
+        arcade.draw_circle_filled(self.position_x, self.position_y, self.radius, self.color)
+
+    def on_update(self):
+        """ Code to control the ball's movement. """
+
+        # Move the ball
+        self.position_y += self.change_y
+        self.position_x += self.change_x
+
+        # See if the ball hit the edge of the screen. If so, change direction
+        if self.position_x < self.radius:
+            self.change_x *= -1
+
+        if self.position_x > SCREEN_WIDTH - self.radius:
+            self.change_x *= -1
+
+        if self.position_y < self.radius:
+            self.change_y *= -1
+
+        if self.position_y > SCREEN_HEIGHT - self.radius:
+            self.change_y *= -1
+
+
+class MyGame(arcade.Window):
+
+    def __init__(self, width, height, title):
+
+        # Call the parent class's init function
+        super().__init__(width, height, title)
+        arcade.set_background_color(arcade.color.ASH_GREY)
+
+        # Create a list for the balls
+        self.ball_list = []
+
+        # Add three balls to the list
+        ball = Ball(50, 50, 3, 3, 15, arcade.color.AUBURN)
+        self.ball_list.append(ball)
+
+        ball = Ball(100, 150, 2, 3, 15, arcade.color.PURPLE_MOUNTAIN_MAJESTY)
+        self.ball_list.append(ball)
+
+        ball = Ball(150, 250, -3, -1, 15, arcade.color.FOREST_GREEN)
+        self.ball_list.append(ball)
+
+    def on_draw(self):
+        """ Called whenever we need to draw the window. """
+        arcade.start_render()
+
+        # Use a "for" loop to pull each ball from the list, then call the draw
+        # method on that ball.
+        for ball in self.ball_list:
+            ball.draw()
+
+    def on_update(self, delta_time):
+        """ Called to update our objects. Happens approximately 60 times per second."""
+
+        # Use a "for" loop to pull each ball from the list, then call the update
+        # method on that ball.
+        for ball in self.ball_list:
+            ball.on_update()
+
+
+def main():
+    window = MyGame(SCREEN_WIDTH, SCREEN_HEIGHT, "Three bouncing balls")
+
+    arcade.run()
+
+
+main()
