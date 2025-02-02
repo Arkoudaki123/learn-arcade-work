@@ -14,7 +14,7 @@ arcade.set_background_color(arcade.csscolor.AQUA)
 
 arcade.start_render()
 
-arcade.draw_lrtb_rectangle_filled(0,599, 300, 0, arcade.csscolor.SEA_GREEN)
+arcade.draw_lrtb_rectangle_filled(0 ,599, 300, 0, arcade.csscolor.SEA_GREEN)
 
 arcade.draw_rectangle_filled(100, 320, 20, 60, arcade.csscolor.SIENNA)
 arcade.draw_circle_filled(100, 350, 30, arcade.csscolor.DARK_GREEN)
