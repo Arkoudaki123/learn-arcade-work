@@ -13,12 +13,14 @@ import arcade
 arcade.open_window(600, 600, "Drawing Example")
 
 # Set the background color
-arcade.set_background_color((245,0,0))
+arcade.set_background_color((0, 0, 0))
 
 # Get ready to draw
 arcade.start_render()
 
-arcade.draw_lrtb_rectangle_filled(0, 599, 300, 0, arcade.csscolor.WHITE)
+arcade.draw_lrtb_rectangle_filled(0, 599, 200, 0, arcade.color.YELLOW)
+
+arcade.draw_lrtb_rectangle_filled(0, 599, 400, 200, arcade.color.RED)
 
 # Finish drawing
 arcade.finish_render()
