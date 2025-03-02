@@ -21,7 +21,7 @@ def main():
 
     # this code populates the room info
     room_list = []
-    names = ['Dining Room', 'Hall', 'Lounge', 'Library', 'Store', 'Kitchen', 'Attic', 'Bathroom']
+    names = ['Dining Room', 'Hall', 'Lounge', 'Library', 'Store', 'Kitchen', 'Attic', 'Bathroom', 'Secret tent']
     descriptions = [
         'You are in a dining room with chandeliers made of gold.You see a door to the west and the north',
         ' You are in a long hall with doors to your north, east,up and west',
@@ -29,15 +29,16 @@ def main():
         ' You are in a library with books around you, you see a door to the south and to the west',
         'You are in a store filled with sodas and sandwiches, you see a door to the south and to the east',
         ' You are in a kitchen surrounded by knives and raw meat you see a door to the north',
-        'You are in an attic a very boring attic you can only go down and east',
-        'You are in a bathroom and a sink'
+        'You are in an attic a very boring attic you can only go down, up and east',
+        'You are in a bathroom with a sink',
+        'You are on top of the roof with your secret tent if you got yelled at by your parents'
     ]
-    norths = [5, None, 3, None, None, None, None, None]
-    easts = [1, 2, None, None, 3, 4, None, None]
-    souths = [None, None, None, 2, None, 0, None, None]
-    wests = [None, 0, 1, 4, 5, None, None, 6]
-    ups = [None, 6, None, None, None, None, None, None]
-    downs = [None, None, None, None, None, None, 1, None]
+    norths = [5, None, 3, None, None, None, None, None, None]
+    easts = [1, 2, None, None, 3, 4, None, None, None]
+    souths = [None, None, None, 2, None, 0, None, None, None]
+    wests = [None, 0, 1, 4, 5, None, None, 6, None]
+    ups = [None, 6, None, None, None, None, 8, None, None]
+    downs = [None, None, None, None, None, None, 1, None, 6]
     for i in range(len(names)):
         room = Room(names[i], descriptions[i], norths[i], easts[i], souths[i], wests[i], ups[i], downs[i])
         room_list.append(room)
