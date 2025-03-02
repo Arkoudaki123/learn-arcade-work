@@ -23,18 +23,12 @@ def main():
     room_list = []
     names = ['Dining Room', 'Hall', 'Lounge', 'Library', 'Store', 'Kitchen']
     descriptions = [
-        'You are in a grand but faded dining room. Cobwebs cover the table and chairs.There are doors to the north '
-        'and to the east.',
-        'You are in a large marble floored entrance hall with hunting trophies adorning the walls. There is a grand '
-        'staircase leading to the upper floor and doors to the east and the west.',
-        'You are in the smoking lounge. There are tatty sofas and chairs and a sideboard with half empty drink '
-        'bottles. There are doors to the north and the west',
-        'You are in the library. In the dim light you can see scores of dust covered bookshelves. There are doors to '
-        'the south and the west.',
-        'You are in a store room. It is dark. You can faintly see a door to the west and ramshackle stairs going down '
-        'to the basement.',
-        'You are in the kitchen. There is an old cauldron in the centre and cooking utensils scattered about. There '
-        'are doors to the south and the east.'
+        'You are in a dining room with chandeliers made of gold.You see a door to the west and the north',
+                    ' You are in a long hall with doors to your north, east and west'
+                    ' You are in a lounge with sofas surrounding you, you see a door to the north and to the east'
+                    ' You are in a library with books around you, you see a door to the south and to the west'
+                    'You are in a store filled with sodas and sandwiches, you see a door to the south and to the east'
+                    ' You are in a kitchen surrounded by knives and raw meat you see a door to the north'
     ]
     norths = [5, None, 3, None, None, None]
     easts = [1, 2, None, None, 3, 4]
