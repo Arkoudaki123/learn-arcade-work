@@ -73,7 +73,7 @@ class MyGame(arcade.Window):
 
             # Create the coin instance
             # Coin image from builtin resources
-            coin = arcade.Sprite(":resources:images/tiles/bomb.png", SPRITE_SCALING_COIN)
+            coin = arcade.Sprite(":resources:images/enemies/saw.png", SPRITE_SCALING_COIN)
 
             # Position the coin
             coin.center_x = random.randrange(SCREEN_WIDTH)
