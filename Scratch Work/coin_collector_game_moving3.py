@@ -1,22 +1,11 @@
-"""
-Sprite Sample Program
-
-- This is an alternative evolution of the coin_collector_moving1 game
-- This time the coins bounce off the edges of the screen
-- This is handled by the Coin class update function, by using the same logic as was used for the
-  bouncing balls in a previous program
-- Note this time we use .left .right .top .bottom sprite attributes which saves us having to worry about object radius
-  for calculating when an object is touching the edge
-- In this program we don't respawn collected coins
-- As an extra feature we make the coins spin - it is handled the same way as x/y change rate
-"""
+""" Sprite Sample Program """
 
 import random
 import arcade
 
 # --- Constants ---
 SPRITE_SCALING_PLAYER = 0.5
-SPRITE_SCALING_COIN = 0.3
+SPRITE_SCALING_COIN = 0.2
 COIN_COUNT = 50
 
 SCREEN_WIDTH = 800
@@ -31,7 +20,7 @@ class Coin(arcade.Sprite):
 
         self.change_x = 0
         self.change_y = 0
-        self.spin_rate = 0
+        self.spin_rate = 20
 
     def on_update(self, delta_time: float = 1 / 60) -> None:
 
@@ -51,13 +40,6 @@ class Coin(arcade.Sprite):
 
         if self.top > SCREEN_HEIGHT:
             self.change_y *= -1
-
-        # make the coin spin - the spin rate is determined when the coin is created in the window class
-        self.angle += self.spin_rate
-
-        # If we rotate past 360, reset it back a turn.
-        if self.angle > 359:
-            self.angle -= 360
 
 
 class MyGame(arcade.Window):
@@ -92,8 +74,8 @@ class MyGame(arcade.Window):
         self.score = 0
 
         # Set up the player
-        # Character image from builtins
-        self.player_sprite = arcade.Sprite(":resources:images/animated_characters/male_person/malePerson_idle.png", SPRITE_SCALING_PLAYER)
+        # Character image from kenney.nl
+        self.player_sprite = arcade.Sprite(":resources:images/animated_characters/robot/robot_idle.png", SPRITE_SCALING_PLAYER)
         self.player_sprite.center_x = 50
         self.player_sprite.center_y = 50
         self.player_list.append(self.player_sprite)
@@ -103,21 +85,20 @@ class MyGame(arcade.Window):
 
             # Create the coin instance
             # Coin image from kenney.nl
-            coin = Coin(":resources:images/items/coinGold.png", SPRITE_SCALING_COIN)
+            coin = Coin(":resources:images/alien/alienBlue_front.png", SPRITE_SCALING_COIN)
 
             # Position the coin
             coin.center_x = random.randrange(SCREEN_WIDTH)
             coin.center_y = random.randrange(SCREEN_HEIGHT)
             coin.change_x = random.randrange(-3, 4)
             coin.change_y = random.randrange(-3, 4)
-            coin.spin_rate = random.randrange(-3, 4)
 
             # Add the coin to the lists
             self.coin_list.append(coin)
 
     def on_draw(self):
         """ Draw everything """
-        arcade.start_render()
+        self.clear()
         self.coin_list.draw()
         self.player_list.draw()
 

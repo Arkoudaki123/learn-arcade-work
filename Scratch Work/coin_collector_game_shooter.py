@@ -20,7 +20,7 @@ SPRITE_SCALING_LASER = 0.8
 COIN_COUNT = 220
 
 SCREEN_WIDTH = 1200
-SCREEN_HEIGHT = 800
+SCREEN_HEIGHT = 600
 
 BULLET_SPEED = 5
 
@@ -63,7 +63,7 @@ class MyGame(arcade.Window):
 
         # Set up the player
         # Image from builtin resources
-        self.player_sprite = arcade.Sprite(":resources:images/animated_characters/male_person/malePerson_idle.png", SPRITE_SCALING_PLAYER)
+        self.player_sprite = arcade.Sprite(":resources:images/tiles/leverLeft.png", SPRITE_SCALING_PLAYER)
         self.player_sprite.center_x = 50
         self.player_sprite.center_y = 70
         self.player_list.append(self.player_sprite)
@@ -73,7 +73,7 @@ class MyGame(arcade.Window):
 
             # Create the coin instance
             # Coin image from builtin resources
-            coin = arcade.Sprite(":resources:images/items/coinGold.png", SPRITE_SCALING_COIN)
+            coin = arcade.Sprite(":resources:images/tiles/bomb.png", SPRITE_SCALING_COIN)
 
             # Position the coin
             coin.center_x = random.randrange(SCREEN_WIDTH)
@@ -113,7 +113,7 @@ class MyGame(arcade.Window):
         """
 
         # Create a bullet
-        bullet = arcade.Sprite(":resources:images/space_shooter/laserBlue01.png", SPRITE_SCALING_LASER)
+        bullet = arcade.Sprite(":resources:images/animated_characters/male_person/malePerson_walk0.png", SPRITE_SCALING_LASER)
         arcade.play_sound(self.laser_sound)
 
         # The image points to the right, and we want it to point up. So
